@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F9B4087-578C-403B-8F37-E64AA26E685B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>DesignPatterns</RootNamespace>
-    <AssemblyName>DesignPatterns</AssemblyName>
+    <ProjectGuid>{A6D1CB27-9039-42DF-867D-1966A53B7892}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Adapter</RootNamespace>
+    <AssemblyName>Adapter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,37 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainClass.cs" />
+    <Compile Include="AdapterClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AbstractFactory\AbstractFactory.csproj">
-      <Project>{26f29e5d-7ae1-4cc2-b614-c0a8b6d22547}</Project>
-      <Name>AbstractFactory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Adapter\Adapter.csproj">
-      <Project>{a6d1cb27-9039-42df-867d-1966a53b7892}</Project>
-      <Name>Adapter</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Builder\Builder.csproj">
-      <Project>{a2725868-4c0a-4885-b629-d0aa8429786a}</Project>
-      <Name>Builder</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MethodFactory\MethodFactory.csproj">
-      <Project>{10cc5db6-aa02-4ebb-a705-acb8926afb01}</Project>
-      <Name>MethodFactory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SimpleFactory\SimpleFactory.csproj">
-      <Project>{638d0366-e531-4db3-9ea9-50bd53ad0ecc}</Project>
-      <Name>SimpleFactory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Singleton\Singleton.csproj">
-      <Project>{70719e71-ecf9-4d44-9040-83f374eddef1}</Project>
-      <Name>Singleton</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
