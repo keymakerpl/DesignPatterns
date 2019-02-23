@@ -46,7 +46,7 @@ namespace Adapter
 
         public float LengthOfSides { get; private set; }
 
-        protected RegularPolygon(Point position, int numberOfSides, float lengthOfSides)
+        public RegularPolygon(Point position, int numberOfSides, float lengthOfSides)
         {
             this.Position = position;
             this.NumberOfSides = numberOfSides;
@@ -107,8 +107,8 @@ namespace Adapter
 
     public class Rectangle
     {
-        protected Point p1; //lewy-górny róg
-        protected Point p2; //prawy-górny róg
+        public Point p1; //lewy-górny róg
+        public Point p2; //prawy-górny róg
 
         protected float Width()
         {
@@ -147,65 +147,49 @@ namespace Adapter
 
     #region Adapter, tu będziemy adoptować niepasujący kod
 
-    public class RegularRectangle : Rectangle, IRegularPolygon
+    public class RegularRectangle : RegularPolygon
     {
-        /// <summary>
-        /// Konwertujemy parametry na przyswajalne dla Rectangle
-        /// </summary>
-        /// <param name="position"></param>
-        /// <param name="sideWidth"></param>
-        /// <returns></returns>
-        public static Point CalculateP1(Point position, float sideWidth)
-        {
-            return new Point(position.X - sideWidth /2, position.Y - sideWidth /2);
-        }
-
-        public static Point CalculateP2(Point position, float sideWidth)
-        {
-            return new Point(position.X + sideWidth / 2, position.Y + sideWidth / 2);
-        }
-
         /// <summary>
         /// Przekazujemy do bazowego konstruktora przekonwertowane wartości
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="p2"></param>
-        public RegularRectangle(Point position, float sideWidth) : base(CalculateP1(position, sideWidth), CalculateP2(position, sideWidth))
+        public RegularRectangle(Rectangle rectangle) 
+            : base(CalculateCenter(rectangle.p1, rectangle.p2), 4, CalculateSideWidth(rectangle.p1, rectangle.p2))
         {
+            this.Rectangle = rectangle;
         }
 
-        public Point Position
+        private static Point CalculateCenter(Point p1, Point p2)
         {
-            get { return new Point((p1.X + p2.X) / 2, (p1.Y + p2.Y) / 2); }
+            return new Point((p1.X + p2.X) / 2, (p1.Y + p2.Y) / 2);
         }
+
+        private static float CalculateSideWidth(Point p1, Point p2)
+        {
+            float sideX = p2.X - p1.X;
+            float sideY = p2.Y - p1.Y;
+
+            if (sideX != sideY) throw new ArgumentException("Podany prostokąt nie jest foremny!");
+            else return sideX;
+        }
+
+        /// <summary>
+        /// Referencja do Adaptee, obiekt który chcemy zaadaptować, z niego korzystamy w adapterze.
+        /// </summary>
+        public Rectangle Rectangle;
 
         #region Implemented
 
-
-        public int NumberOfSides
+        public override void ShowNameOfPolygon()
         {
-            get { return 4; }
+            this.Rectangle.DisplayRectangleName();
+            Console.WriteLine(" foremny");
         }
 
-        public float LengthOfSides
+        public override float CalculateField()
         {
-            get { return Width(); }
-        }
-
-        public float CalculateRound()
-        {
-            return NumberOfSides * LengthOfSides;
-        }
-
-        public void ShowNameOfPolygon()
-        {
-            base.DisplayRectangleName();
-            Console.WriteLine("Prostokąt regularny");
-        }
-
-        public void ShowParameters()
-        {
-            Console.WriteLine(String.Format("Parametry x:{0}, y:{1}, liczba boków: {2}, długość boków: {3}", Position.X, Position.Y, NumberOfSides, LengthOfSides));
+            return Rectangle.CalculateField();
         }
 
         #endregion

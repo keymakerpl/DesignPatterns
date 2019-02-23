@@ -57,13 +57,33 @@
       <Project>{a6d1cb27-9039-42df-867d-1966a53b7892}</Project>
       <Name>Adapter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bridge\Bridge.csproj">
+      <Project>{483cabda-8519-496f-90fd-96dac5a7f101}</Project>
+      <Name>Bridge</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Builder\Builder.csproj">
       <Project>{a2725868-4c0a-4885-b629-d0aa8429786a}</Project>
       <Name>Builder</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Decorator\Decorator.csproj">
+      <Project>{bfe88b70-bc69-44f4-ae0c-c1c88abe8e6a}</Project>
+      <Name>Decorator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facade\Facade.csproj">
+      <Project>{0f463440-ecdf-4a8f-a21e-e1016ee48b33}</Project>
+      <Name>Facade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Flyweight\Flyweight.csproj">
+      <Project>{c2a046d6-e2e1-4fae-adef-a0aee8d01faf}</Project>
+      <Name>Flyweight</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MethodFactory\MethodFactory.csproj">
       <Project>{10cc5db6-aa02-4ebb-a705-acb8926afb01}</Project>
       <Name>MethodFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Proxy\Proxy.csproj">
+      <Project>{e468f514-e47d-4258-8993-7ad08a4b884a}</Project>
+      <Name>Proxy</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleFactory\SimpleFactory.csproj">
       <Project>{638d0366-e531-4db3-9ea9-50bd53ad0ecc}</Project>
