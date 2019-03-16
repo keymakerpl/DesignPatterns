@@ -65,6 +65,10 @@
       <Project>{a2725868-4c0a-4885-b629-d0aa8429786a}</Project>
       <Name>Builder</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Composite\Composite.csproj">
+      <Project>{5ce30b43-f686-4138-807b-a98b72e1cb96}</Project>
+      <Name>Composite</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Decorator\Decorator.csproj">
       <Project>{bfe88b70-bc69-44f4-ae0c-c1c88abe8e6a}</Project>
       <Name>Decorator</Name>
@@ -76,6 +80,10 @@
     <ProjectReference Include="..\Flyweight\Flyweight.csproj">
       <Project>{c2a046d6-e2e1-4fae-adef-a0aee8d01faf}</Project>
       <Name>Flyweight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interpreter\Interpreter.csproj">
+      <Project>{cad8004a-0937-4dee-87d2-255f32bb4afe}</Project>
+      <Name>Interpreter</Name>
     </ProjectReference>
     <ProjectReference Include="..\MethodFactory\MethodFactory.csproj">
       <Project>{10cc5db6-aa02-4ebb-a705-acb8926afb01}</Project>
@@ -92,6 +100,10 @@
     <ProjectReference Include="..\Singleton\Singleton.csproj">
       <Project>{70719e71-ecf9-4d44-9040-83f374eddef1}</Project>
       <Name>Singleton</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TemplateMethod\TemplateMethod.csproj">
+      <Project>{c19973ff-e53d-40d5-8063-145b3e0df66c}</Project>
+      <Name>TemplateMethod</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

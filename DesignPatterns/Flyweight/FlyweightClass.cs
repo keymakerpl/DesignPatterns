@@ -26,7 +26,7 @@ namespace Flyweight
     /// <summary>
     /// Klasa abstrakcyjna znaku, lekka klasa, zawiera tylko znak
     /// </summary>
-    public class Sign
+    public abstract class Sign
     {
         protected char ch;
 
@@ -78,6 +78,9 @@ namespace Flyweight
 
     #region Fabryka Znaków
 
+    /// <summary>
+    /// Fabryka znaków, tworzy nowy konkretny Obiekt w momencie kiedy jest wymagany
+    /// </summary>
     public class SignFactory
     {
 
@@ -106,6 +109,7 @@ namespace Flyweight
                 }
             }
 
+            if (!signs.Keys.Contains(ch)) signs.Add(ch, sign);
             return sign;
         }
 

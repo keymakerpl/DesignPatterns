@@ -11,11 +11,21 @@ using Facade;
 using Bridge;
 using Proxy;
 using Flyweight;
+using Interpreter;
+using Composite;
+using TemplateMethod;
 
 namespace DesignPatterns
 {
+    /// <summary>
+    /// Pattern clients
+    /// </summary>
     class MainClass
     {
+        /// <summary>
+        /// Upss... odpalam klientów w mejnie
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             //RunMethodFactory();
@@ -25,9 +35,46 @@ namespace DesignPatterns
             //RunFacade();
             //RunBridge();
             //RunProxy();
-            RunFlyweight();
+            //RunFlyweight();
+            //RunComposite();
+            RunTemplateMethod();
 
             Console.ReadLine();
+        }
+
+        private static void RunTemplateMethod()
+        {
+            TemplateClass.Pizza margherita = new TemplateClass.Margheritha();
+            Console.WriteLine();
+            TemplateClass.Pizza soprano = new TemplateClass.Soprano();
+            Console.WriteLine();
+        }
+
+        private static void RunComposite()
+        {
+            Boss rektor = new Boss("Jan", "Nowak", "Rektor");
+            rektor.AddEmployee(new Employee("Zygmunt", "Hajzer", "Pracownik sekretariatu"));
+            rektor.AddEmployee(new Employee("Anna", "Wajs", "Pracownik administracji"));
+
+            Boss dziekanFizyki = new Boss("Juliusz", "Goetze", "Dziekan fizyki");
+            rektor.AddEmployee(dziekanFizyki);
+            
+            Boss kierownikDzialu = new Boss("Paweł", "Wipler", "Kierownik działu");
+            kierownikDzialu.AddEmployee(new Employee("Wojtek", "Fryc", "Pracownik działu"));
+            kierownikDzialu.AddEmployee(new Employee("Klaudia", "Cyc", "Wykładowca"));
+            dziekanFizyki.AddEmployee(kierownikDzialu);
+
+            kierownikDzialu.AddEmployee(rektor);
+            kierownikDzialu.AddEmployee(new Employee("Krystian", "Szampan", "Wykładowca"));
+
+            VisitorDisplayInformation visitorDisplay = new VisitorDisplayInformation();
+
+            rektor.AcceptVisitor(visitorDisplay);
+            Console.WriteLine("\n");
+            VisitorCounting visitorCounting = new VisitorCounting();
+            rektor.AcceptVisitor(visitorCounting);
+            visitorCounting.DisplayEmployeeCount();
+
         }
 
         private static void RunFlyweight()
